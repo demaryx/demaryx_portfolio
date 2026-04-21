@@ -2,7 +2,7 @@ const projects = [
     {
         id: 1,
         title: "Lumina Commerce",
-        category: "ecommerce",
+        category: "web-ecom",
         categoryLabel: "Ecommerce",
         shortDesc: "A high-end minimal e-commerce experience scaling user conversions by 45%.",
         image: "assets/ecom.png",
@@ -14,7 +14,7 @@ const projects = [
     {
         id: 2,
         title: "Apex Web Studio",
-        category: "web-dev",
+        category: "web-ecom",
         categoryLabel: "Web Design",
         shortDesc: "A bold, dark-mode landing page designed to attract high-ticket clients.",
         image: "assets/webdev.png",
@@ -46,5 +46,29 @@ const projects = [
         built: "A bold, unapologetic typography foundation coupled with dynamic collateral that looks premium, futuristic, and highly memorable.",
         outcome: "The visual reboot was directly credited by founders for helping close their $5M Series A funding round with extreme investor confidence.",
         liveLink: "https://verve.example.com"
+    },
+    {
+        id: 5,
+        title: "Nexa CRM",
+        category: "app-dash",
+        categoryLabel: "Dashboard",
+        shortDesc: "A real-time customer management portal with deep AI insights.",
+        image: "assets/dash.png",
+        problem: "Nexa's sales team was bogged down by a sluggish, counter-intuitive interface that made tracking high-value leads impossible at scale.",
+        built: "We engineered a ultra-responsive SaaS dashboard with real-time data visualization, automated task management, and a clean, 'calm' interface design.",
+        outcome: "Sales efficiency increased by 65%. The time-to-close for enterprise deals dropped from 14 days to just 6.",
+        liveLink: "https://nexa.example.com"
+    },
+    {
+        id: 6,
+        title: "FitFlow Pro",
+        category: "app-dash",
+        categoryLabel: "Mobile App",
+        shortDesc: "A high-performance fitness tracker with biometric data synchronization.",
+        image: "assets/app.png",
+        problem: "Most fitness apps in the market were either too complex for casual users or too shallow for enthusiasts. FitFlow needed a balanced, premium feel.",
+        built: "A cross-platform mobile experience with smooth micro-interactions, dark-mode aesthetics, and a hyper-personalized onboarding flow.",
+        outcome: "User retention peaked at 88% in the first quarter post-launch, surpassing all initial market benchmarks.",
+        liveLink: "https://fitflow.example.com"
     }
 ];

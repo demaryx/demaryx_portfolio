@@ -164,8 +164,8 @@ h3 {
 }
 
 h1 {
-    font-size: 6.5rem;
-    line-height: 1;
+    font-size: clamp(3rem, 10vw, 6.5rem);
+    line-height: 1.1;
     margin-bottom: 2rem;
     background: linear-gradient(180deg, #FFFFFF 0%, #7084a8 100%);
     -webkit-background-clip: text;
@@ -179,7 +179,7 @@ h1 {
 }
 
 h2 {
-    font-size: 4rem;
+    font-size: clamp(2rem, 6vw, 4rem);
     margin-bottom: 1.5rem;
 }
 
@@ -374,11 +374,20 @@ section {
     gap: 1.5rem;
 }
 
+/* Bento Item Classes to replace inline styles */
+.bento-full { grid-column: span 12; }
+.bento-half { grid-column: span 6; }
+.bento-third { grid-column: span 4; }
+
+@media (max-width: 900px) {
+    .bento-half, .bento-third { grid-column: span 12; }
+}
+
 .card {
     background: var(--box-surface);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 0;
-    padding: 4rem;
+    padding: clamp(1.5rem, 5vw, 4rem);
     backdrop-filter: blur(15px);
     transition: var(--transition-slow);
     position: relative;
@@ -805,7 +814,7 @@ section {
 
 /* Detail Page */
 .detail-hero {
-    height: 80vh;
+    height: clamp(50vh, 70vh, 80vh);
     position: relative;
     margin-top: 60px;
     display: flex;
@@ -837,7 +846,7 @@ section {
 }
 
 .detail-title-wrap h1 {
-    font-size: 5rem;
+    font-size: clamp(2.5rem, 8vw, 5rem);
     margin-bottom: 1rem;
     text-transform: uppercase;
 }
@@ -982,7 +991,7 @@ footer {
 
 /* Utility Classes for removed inline styles */
 .hero-title {
-    font-size: 6.5rem;
+    font-size: clamp(3rem, 10vw, 6.5rem);
 }
 
 .hero-btns {
@@ -1030,7 +1039,7 @@ footer {
     justify-content: space-around;
     background: var(--box-surface);
     border: 1px solid var(--box-border);
-    padding: 4rem;
+    padding: clamp(2rem, 5vw, 4rem);
     text-align: center;
     flex-wrap: wrap;
     gap: 2rem;
@@ -1128,18 +1137,6 @@ footer {
 
     #menu-toggle:checked~.menu-btn {
         color: var(--brand-accent);
-    }
-
-    .hero-title {
-        font-size: 4rem;
-    }
-
-    h1 {
-        font-size: 4rem;
-    }
-
-    h2 {
-        font-size: 3rem;
     }
 
     .hero-section {
@@ -1572,7 +1569,7 @@ footer {
 
 /* Individual Card */
 .testi-card {
-    width: 340px;
+    width: clamp(280px, 85vw, 340px);
     min-height: 220px;
     flex-shrink: 0;
     background: rgba(13, 20, 36, 0.7);
@@ -1903,4 +1900,18 @@ footer {
     height: 55px;
     background-color: rgba(30, 112, 255, 0.08);
     border-color: rgba(30, 112, 255, 0.5);
+}
+
+/* Responsive Utilities */
+.section-stats { padding-top: 2rem; padding-bottom: 5rem; }
+.section-what-we-do { padding-top: 5rem; padding-bottom: 2rem; }
+.section-recent-projects { padding-top: 4rem; }
+
+@media (max-width: 768px) {
+    .section-stats,
+    .section-what-we-do,
+    .section-recent-projects {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
 }

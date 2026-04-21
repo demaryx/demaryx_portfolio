@@ -59,72 +59,61 @@
     </header>
 
 <main>
-    <div class="glow-orb" style="top:10%;"></div>
-    <section class="container" style="padding-top: 150px;">
-        <div class="fade-in" style="text-align:center; max-width: 800px; margin: 0 auto 5rem;">
-            <h1 style="font-size: 4rem;">Services Built for Growth.</h1>
-            <p style="margin: 1rem auto; max-width:600px;">Organize multiple services into clear, professional categories so you can easily find the digital solutions you need.</p>
-        </div>
-        
-        <div class="bento-grid fade-in">
-            <!-- 1. Web & Ecommerce Solutions -->
-            <div class="card bento-full" style="display:flex; flex-wrap:wrap; gap:3rem; align-items:center;">
-                <div style="flex:1; min-width:300px;">
-                    <h2 style="font-size:2.8rem; background: linear-gradient(135deg, var(--brand-accent), #00d2ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Web & Ecommerce Solutions</h2>
-                </div>
-                <div style="flex:2; min-width:300px;">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Lightning Fast. Instantly Credible.</h3>
-                    <p style="margin-bottom:1rem; font-size:1.1rem;">Includes: <strong>Web Design, Website Development, Ecommerce Store Development.</strong> We engineer digital platforms that enhance your brand, multiply your user retention, and skyrocket your revenue.</p>
-                    <a href="work.html" class="btn btn-outline" style="padding:0.5rem 1rem; border-radius: 12px; font-size:0.9rem;">View Projects →</a>
+    <div class="glow-orb" style="top:10%; left:20%;"></div>
+    <section class="container" style="padding-top: clamp(100px, 15vh, 150px); padding-bottom: 5rem;">
+        <div class="fade-in" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 400px), 1fr)); gap: 4rem;">
+            
+            <div>
+                <h1 style="font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1;">Let's Talk Scaling.</h1>
+                <p style="margin-top: 2rem; font-size: 1.25rem;">Whether you need an elite brand overhaul or a highly automated software solution, we are ready to inject massive growth into your business.</p>
+                
+                <div style="margin-top: 3rem;">
+                    <h4 style="color:#fff; margin-bottom: 0.5rem; font-size:1.1rem;">Email Us Directly</h4>
+                    <p style="color:var(--brand-accent); font-weight:700; font-size:1.2rem;">info@demaryx.com</p>
                 </div>
             </div>
 
-            <!-- 2. AI & cross -->
-            <div class="card bento-half">
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">AI & Automation</h3>
-                <p style="margin-bottom: 1rem;">Eliminate human error and slash operational costs.</p>
-                <ul style="color:var(--text-secondary); margin-left: 1rem; margin-bottom: 1.5rem;">
-                    <li>AI Models</li><li>Agentic AI Systems</li><li>Business Automation</li><li>AI Chatbots</li><li>AI Animated Videos</li>
-                </ul>
-                <a href="work.html" style="color:var(--brand-accent); font-weight:700;">View Projects →</a>
+            <div class="card">
+                <form id="contactForm" class="contact-form">
+                    <label>Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                    
+                    <label>Your Email</label>
+                    <input type="email" id="email" name="email" required placeholder="john@company.com">
+                    
+                    <label>Project Details / Goals</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="To take our brand to the next level, we need..."></textarea>
+                    
+                    <button type="submit" class="btn" style="width: 100%; border-radius: 12px; margin-top: 1rem;">Send Inquiry</button>
+                    <div id="formSuccess" style="display: none; margin-top: 1rem; color: #1eff64; font-weight: bold; text-align: center;">Message Sent Successfully!</div>
+                </form>
             </div>
-
-            <!-- 3. App -->
-            <div class="card bento-half">
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">App & Dashboard Development</h3>
-                <p style="margin-bottom: 1rem;">Robust, scalable applications built for the future.</p>
-                <ul style="color:var(--text-secondary); margin-left: 1rem; margin-bottom: 1.5rem;">
-                    <li>Mobile App Development</li><li>Web Applications</li><li>Dashboard Systems</li><li>SaaS Platforms</li>
-                </ul>
-                <a href="work.html" style="color:var(--brand-accent); font-weight:700;">View Projects →</a>
-            </div>
-
-            <!-- 4. Branding -->
-            <div class="card bento-third">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Branding & Graphic Design</h3>
-                <ul style="color:var(--text-secondary); margin-left: 1rem;">
-                    <li>Logo Design & Brand Identity</li><li>Social Media Designs</li><li>Brochures & Infographics</li>
-                </ul>
-            </div>
-
-            <!-- 5. Content -->
-            <div class="card bento-third">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Content & Creative Design</h3>
-                <ul style="color:var(--text-secondary); margin-left: 1rem;">
-                    <li>Resume Design</li><li>Animated Cartoons</li><li>Visual Content Creation</li>
-                </ul>
-            </div>
-
-            <!-- 6. Specialized -->
-            <div class="card bento-third">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Specialized Services</h3>
-                <ul style="color:var(--text-secondary); margin-left: 1rem;">
-                    <li>Wikipedia Services</li><li>Custom Digital Projects</li>
-                </ul>
-            </div>
+            
         </div>
     </section>
 </main>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // As a static page, we simulate form submission
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        setTimeout(() => {
+            this.reset();
+            submitBtn.textContent = 'Send Inquiry';
+            submitBtn.disabled = false;
+            document.getElementById('formSuccess').style.display = 'block';
+            
+            setTimeout(() => {
+                document.getElementById('formSuccess').style.display = 'none';
+            }, 5000);
+        }, 1000);
+    });
+</script>
 
     <footer>
         <div class="container">

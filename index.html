@@ -72,7 +72,7 @@
     </section>
     
     <!-- Stats Section -->
-    <section class="container" style="padding-top: 2rem; padding-bottom: 5rem;">
+    <section class="container section-stats">
         <div class="stats-bar fade-in">
             <div class="stat-item">
                 <h3 class="stat-number">55+</h3>
@@ -118,9 +118,9 @@
     </div>
 
     <!-- Category Services Boxes -->
-    <section class="container fade-in" style="padding-top: 5rem; padding-bottom: 2rem;">
+    <section class="container section-what-we-do fade-in">
         <div class="recent-header" style="margin-bottom: 2.5rem;">
-            <h2 style="font-size: 2.5rem;">What We Do</h2>
+            <h2 style="font-size: clamp(2rem, 5vw, 2.8rem);">What We Do</h2>
             <a href="work.html" class="animated-btn">
                 <span class="btn-text">View All Work</span>
                 <span class="btn-icon">→</span>
@@ -167,7 +167,7 @@
     </section>
 
     <!-- Recent Projects -->
-    <section class="container" style="padding-top: 4rem;">
+    <section class="container section-recent-projects">
         <div class="recent-header fade-in">
             <h2>Recent Projects</h2>
             <a href="work.html" class="animated-btn">
@@ -184,7 +184,8 @@
             document.addEventListener("DOMContentLoaded", () => {
                 const grid = document.getElementById("homeProjectsGrid");
                 if(typeof projects !== 'undefined' && projects.length > 0) {
-                    const recentProjects = projects.slice(0, 4);
+                    // Show 4 most recent (last 4 added)
+                    const recentProjects = [...projects].reverse().slice(0, 4);
                     let html = '';
                     recentProjects.forEach((row, i) => {
                         const projNum = i + 1;
