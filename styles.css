@@ -511,7 +511,7 @@ nav {
 }
 
 @media(max-width: 900px) {
-    .menu-btn { display: flex; }
+    .menu-btn { display: flex !important; }
     
     .nav-links {
         position: fixed;
@@ -1488,7 +1488,7 @@ footer {
 
     /* Move menu btn to left */
     .menu-btn {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         justify-content: space-between;
         width: 30px;
