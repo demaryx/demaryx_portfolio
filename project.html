@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demaryx | Case Study</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/logooo.png">
+    <script src="data.js"></script>
+</head>
+
+<body>
+
+    <!-- Elite Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="assets/logooo.png" alt="Demaryx Logo" class="loader-logo">
+            <div class="counter">000
+                <div id="loaderCounter">000</div>
+            </div>
+            <div class="loader-status" id="loaderStatus">Designing the Future...</div>
+        </div>
+    </div>
+
+    <!-- Noise Texture for depth without heavy images -->
+    <div class="noise-overlay"></div>
+
+
+
+    <header>
+        <div class="container nav-container">
+            <nav>
+                <a href="index.html" class="logo"><img src="assets/logooo.png" alt="Demaryx"></a>
+
+                <input type="checkbox" id="menu-toggle" class="menu-checkbox" hidden>
+                <label for="menu-toggle" class="menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="work.html">Portfolio</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+<main id="projectContent" class="container" style="display: none;">
+    <div class="detail-hero fade-in">
+        <img id="pImg" src="" alt="Project">
+        <div class="detail-title-wrap">
+            <span class="proj-tag" id="pCategory"></span>
+            <h1 id="pTitle"></h1>
+        </div>
+    </div>
+
+    <div class="detail-content fade-in">
+        <div class="main-info">
+            <div style="margin-bottom: 6rem;">
+                <h2 class="section-tag" style="text-align: left; margin-bottom: 1.5rem;">01. The Problem</h2>
+                <p id="pProblem"></p>
+            </div>
+            
+            <div style="margin-bottom: 6rem;">
+                <h2 class="section-tag" style="text-align: left; margin-bottom: 1.5rem;">02. Our Solution</h2>
+                <p id="pSolution"></p>
+            </div>
+
+            <div style="margin-bottom: 6rem;">
+                <h2 class="section-tag" style="text-align: left; margin-bottom: 1.5rem;">03. The Result</h2>
+                <p id="pResult"></p>
+            </div>
+        </div>
+        
+        <div class="sidebar-info">
+            <div class="meta-info">
+                <div class="meta-item" style="margin-bottom: 2.5rem;">
+                    <h4 style="color: #fff; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Tech Stack</h4>
+                    <div id="pTechStack" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                        <!-- JS injected -->
+                    </div>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="#" id="pLiveLink" target="_blank" class="btn btn-primary" style="width:100%;">Live Demo ↗</a>
+                    <a href="#" id="pGithubLink" target="_blank" class="btn btn-glass" style="width:100%;">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div id="notFoundMessage" style="display:none; text-align:center; padding: 30vh 0;">
+    <h2>Project Not Found.</h2>
+    <a href="work.html" class="btn btn-primary">Return to Archive</a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    function nl2br(str) {
+        if (!str) return '';
+        return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br>$2');
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = parseInt(urlParams.get('id'));
+
+    let project = null;
+    if (typeof projects !== 'undefined') {
+        project = projects.find(p => p.id === id);
+    }
+
+    if (project) {
+        document.getElementById('projectContent').style.display = 'block';
+        
+        document.getElementById('pImg').src = project.image;
+        document.getElementById('pImg').alt = project.title;
+        document.getElementById('pCategory').textContent = project.categoryLabel;
+        document.getElementById('pTitle').textContent = project.title;
+        
+        document.getElementById('pProblem').innerHTML = nl2br(project.problem);
+        document.getElementById('pSolution').innerHTML = nl2br(project.solution);
+        document.getElementById('pResult').innerHTML = nl2br(project.result);
+        
+        // Render Tech Stack
+        const techContainer = document.getElementById('pTechStack');
+        if (project.techStack) {
+            project.techStack.forEach(tech => {
+                const span = document.createElement('span');
+                span.className = 'badge';
+                span.style.marginBottom = '0';
+                span.textContent = tech;
+                techContainer.appendChild(span);
+            });
+        }
+        
+        // Links
+        const liveBtn = document.getElementById('pLiveLink');
+        const githubBtn = document.getElementById('pGithubLink');
+        
+        if (project.liveLink && project.liveLink !== '#') {
+            liveBtn.href = project.liveLink;
+        } else {
+            liveBtn.style.display = 'none';
+        }
+        
+        if (project.githubLink && project.githubLink !== '#') {
+            githubBtn.href = project.githubLink;
+        } else {
+            githubBtn.style.display = 'none';
+        }
+
+    } else {
+        document.getElementById('notFoundMessage').style.display = 'block';
+    }
+});
+</script>
+
+    <footer>
+        <div class="container">
+            <h2 style="font-size: 2.8rem; color:#fff; margin-bottom: 3rem;">Let's Ignite Your Growth.</h2>
+            
+            <div class="footer-grid">
+                <div class="footer-col" style="max-width: 400px;">
+                    <img src="assets/logooo.png" alt="Demaryx Logo" style="height: 45px; margin-bottom: 2rem; filter: brightness(1);">
+                    <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;">Demaryx is a premier digital agency dedicated to crafting elite web experiences, AI automation, and high-performance brand identities that drive market dominance.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><strong style="color:var(--brand-accent);">Phone:</strong> +44 7781556888</p>
+                    <p><strong style="color:var(--brand-accent);">Email:</strong> info@demaryx.com</p>
+                    <p><strong style="color:var(--brand-accent);">London:</strong> 48 Willow Crescent, NW5 3RT</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="work.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Demaryx. All rights reserved.</p>
+            </div>
+            <script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/447781556888" target="_blank" class="floating-wa">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="currentColor">
+            <path d="M16 2.052A13.916 13.916 0 0 0 2.083 15.969c0 2.68.755 5.289 2.19 7.575L2 29.986l6.637-2.176c2.203 1.258 4.697 1.921 7.28 1.92h.005A13.921 13.921 0 0 0 29.843 15.972 13.882 13.882 0 0 0 16 2.052zm0 23.513h-.003c-2.27 0-4.492-.61-6.435-1.761l-.462-.274-4.786 1.57.142-4.908-.3-.478a11.589 11.589 0 0 1-1.776-6.191C2.38 7.375 7.382 2.373 13.532 2.373c2.984 0 5.79 1.162 7.898 3.272A11.536 11.536 0 0 1 24.696 13.54c.001 6.148-5.003 11.15-11.152 11.15zm6.113-8.349c-.335-.168-1.982-.98-2.289-1.092-.307-.113-.53-.168-.753.168-.223.335-.865 1.092-1.06 1.316-.195.223-.39.251-.725.084-.335-.168-1.413-.521-2.695-1.666-.997-.891-1.67-1.993-1.865-2.328-.195-.335-.02-.518.148-.684.15-.15.335-.392.502-.587.168-.195.223-.335.335-.558.113-.223.056-.418-.028-.587-.084-.168-.753-1.816-1.032-2.486-.271-.652-.547-.564-.753-.574-.195-.01-.418-.011-.641-.011-.223 0-.586.084-.893.419-.307.335-1.171 1.145-1.171 2.793s1.199 3.24 1.367 3.463c.168.223 2.361 3.606 5.719 5.056.8.345 1.425.552 1.912.707.803.255 1.535.218 2.112.132.645-.096 1.982-.81 2.261-1.592.279-.783.279-1.453.195-1.593-.084-.141-.307-.225-.642-.393z"/>
+        </svg>
+    </a>
+
+    <!-- Custom Cursor elements -->
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="custom-cursor-follower" id="cursorFollower"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
